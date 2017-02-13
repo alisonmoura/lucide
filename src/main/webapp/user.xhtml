@@ -10,7 +10,20 @@
 
 <h1>User's Manager Page</h1>
 
-<h:outputLabel>Name: #{userController.user.name}</h:outputLabel>
+<h:form>
+    Name: <h:inputText value="#{userController.user.name}"></h:inputText>
+    Email: <h:inputText value="#{userController.user.email}"></h:inputText>
+    Password: <h:inputText value="#{userController.user.password}"></h:inputText>
+    <h:commandButton action="#{userController.save()}" process="@form" update="@form" value="Save"></h:commandButton>
+
+    <h:dataTable value="userController.users" var="u">
+       <h:column>
+           <f:facet name="header">Name</f:facet>
+           #{u.name}
+       </h:column>
+    </h:dataTable>
+
+</h:form>
 
 </body>
 </html>
